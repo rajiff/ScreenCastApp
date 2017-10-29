@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+  screencast:
+    image: screencast:0.1.0
+    build: ./
+    restart: always
+    cap_add:
+      - SYS_ADMIN
+    entrypoint:
+      # /usr/bin/yarn test
+      yarn e2e
+      # - /usr/bin/yarn test && /usr/bin/yarn e2e
+      # - /usr/bin/ng test && /usr/bin/ng e2e

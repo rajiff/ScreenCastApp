@@ -101,5 +101,7 @@ typings/
 # dotenv environment variables file
 .env
 
+yarn.lock
+
 # Specific to this project, we generate reports, which we don't want to be committed to git
 reports
