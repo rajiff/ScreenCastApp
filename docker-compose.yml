@@ -1,14 +1,34 @@
 version: '2'
 services:
 
-  screencast:
-    image: screencast:0.1.0
-    build: ./
+  # screencast:
+  #   image: screencast:0.1.0
+  #   build: ./
+  #   restart: always
+  #   cap_add:
+  #     - SYS_ADMIN
+  #   entrypoint:
+  #     # /usr/bin/yarn test
+  #     yarn e2e
+  #     # - /usr/bin/yarn test && /usr/bin/yarn e2e
+  #     # - /usr/bin/ng test && /usr/bin/ng e2e
+
+  javaspringfs:
+    image: javaspringfs:0.1.0
+    build:
+      context: .
+      dockerfile: FS_Dockerfile
     restart: always
-    cap_add:
-      - SYS_ADMIN
+    # cap_add:
+    #   - SYS_ADMIN
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      # MYSQL_ROOT_HOST: 127.0.0.1
+      MYSQL_ADMIN_USER: root
+      MYSQL_ADMIN_PASSWORD: ''
+      MYSQL_HOST: localhost
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student
+      MYSQL_DATABASE: student
     entrypoint:
-      # /usr/bin/yarn test
-      yarn e2e
-      # - /usr/bin/yarn test && /usr/bin/yarn e2e
-      # - /usr/bin/ng test && /usr/bin/ng e2e
+      yarn boot
